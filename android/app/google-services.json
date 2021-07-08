@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "596057029341",
+    "project_id": "salon-app-social-login",
+    "storage_bucket": "salon-app-social-login.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596057029341:android:416170a939041cba6e7934",
+        "android_client_info": {
+          "package_name": "com.tecHive.salonandriodapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596057029341-7fhkoab715vphd1buptfrjsjvfsmt6d0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3k-ZCWSv0UTDrMmtEx_pfZmaKAWxIOA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596057029341-7fhkoab715vphd1buptfrjsjvfsmt6d0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "596057029341-oeh1dk1b8v0dfq7mllmo6du63a59i2ql.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tecHive.salonappios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

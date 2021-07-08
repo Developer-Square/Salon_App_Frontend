@@ -1,7 +1,7 @@
 name: salon
 description: Salon-Barber-Spa Flutter UI Template
-author: Zoran Juric
-homepage: http://zj.rs/salon/docs
+author: Ryan Njoroge
+# homepage: http://zj.rs/salon/docs
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -28,6 +28,12 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  # A Flutter plugin to enable users to sign in through google
+  google_sign_in: ^4.5.9
+  firebase_core: ^0.7.0
+  firebase_auth: ^0.20.1
+  # A Flutter plugin to api requests to be sent
+  http: ^0.12.2
   # A Flutter plugin for iOS and Android allowing access to the device cameras.
   camera: ^0.5.8+11
   # A Flutter plugin for finding commonly used locations on the filesystem.
