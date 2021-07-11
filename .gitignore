@@ -32,6 +32,7 @@
 /build/
 /android/app/release/
 /ios/build/
+lib/configs/secrets
 
 # Web related
 lib/generated_plugin_registrant.dart
