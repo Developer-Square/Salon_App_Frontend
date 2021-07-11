@@ -11,7 +11,7 @@ import 'package:salon/screens/search/widgets/search_tabs.dart';
 import 'package:salon/utils/bottom_bar_items.dart';
 import 'package:salon/widgets/shimmer_box.dart';
 import 'package:salon/screens/home/widgets/custom_app_bar.dart';
-import 'package:salon/configs/app_globals.dart';
+import 'package:salon/screens/home/widgets/home_page_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -32,7 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  Widget _showHomePage() {
+  // Use this when fetching data from backend
+  Widget _showHome() {
     return Container(
       height: 220,
       child: Column(
@@ -115,9 +116,19 @@ class _HomeScreenState extends State<HomeScreen> {
       child: SafeArea(
         child: Scaffold(
             backgroundColor: AppGlobals().backgroundColor,
-            body: Container(
-              child: CustomAppBar(
-                activePage: 'home',
+            body: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: CustomAppBar(
+                      activePage: 'home',
+                    ),
+                  ),
+                  HomePageCard(
+                    photoUrl: 'assets/images/profile/profile-1.jpg',
+                  )
+                ],
               ),
             )),
       ),

@@ -18,6 +18,14 @@ class AppGlobals {
   /// App primary color.
   final Color primaryColor = const Color(0xffee2a7b);
 
+  /// Adds dynamic styles to text widgets.
+  TextStyle buildTextStyle(double fontSize, bool fontWeight, Color color) {
+    return TextStyle(
+        fontSize: fontSize,
+        fontWeight: fontWeight ? FontWeight.bold : FontWeight.normal,
+        color: color);
+  }
+
   /// Singleton instance.
   static final AppGlobals instance = AppGlobals._();
 
