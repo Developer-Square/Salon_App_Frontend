@@ -1504,7 +1504,7 @@ class L10n {
   /// `Your phonenumber`
   String get signUpHintPhoneNumber {
     return Intl.message(
-      'Your username',
+      'Your phone number',
       name: 'signUpHintPhoneNumber',
       desc: '',
       args: [],

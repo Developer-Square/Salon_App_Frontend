@@ -15,14 +15,11 @@ Future<Object> signUp({
 }) async {
   Map<String, String> body = {
     'username': '$username',
-    'client_id': '${globals.clientIdApi}',
-    'client_secret': '${globals.clientSecretApi}',
     'email': '$email',
     'first_name': '$firstName',
     'phone_number': '$phoneNumber',
     'password': '$password'
   };
-
   final Uri url = Uri.http(globals.baseUrl, '/api/users/register/');
   final response = await http.post(url, body: body);
 

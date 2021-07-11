@@ -145,7 +145,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     _textEmailController.clear();
                   },
                   onSubmitted: (String text) => FormUtils.fieldFocusChange(
-                      context, _focusEmail, _focusPass),
+                      context, _focusEmail, _focusPhoneNumber),
                   icon: const Icon(Icons.clear),
                   controller: _textEmailController,
                   keyboardType: TextInputType.emailAddress,
@@ -155,6 +155,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         L10n.of(context).formValidatorRequired),
                     FormValidator.isEmail(L10n.of(context).formValidatorEmail),
                   ]),
+                ),
+                FormLabel(text: L10n.of(context).signUpLabelPhoneNumber),
+                ThemeTextInput(
+                  key: keyPhoneNumberInput,
+                  hintText: L10n.of(context).signUpHintPhoneNumber,
+                  focusNode: _focusPhoneNumber,
+                  onTapIcon: () async {
+                    await Future<dynamic>.delayed(
+                        const Duration(milliseconds: 100));
+                    _textPhoneNumberController.clear();
+                  },
+                  onSubmitted: (String text) => FormUtils.fieldFocusChange(
+                      context, _focusPhoneNumber, _focusPass),
+                  icon: const Icon(Icons.clear),
+                  controller: _textPhoneNumberController,
+                  keyboardType: TextInputType.phone,
+                  validator: FormValidator.isRequired(
+                      L10n.of(context).formValidatorRequired),
                 ),
                 FormLabel(text: L10n.of(context).signUpLabelPassword),
                 ThemeTextInput(
