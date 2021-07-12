@@ -5,13 +5,13 @@ import 'package:salon/configs/constants.dart';
 import 'package:salon/data/models/category_model.dart';
 import 'package:salon/data/models/search_tab_model.dart';
 import 'package:salon/main.dart';
-import 'package:salon/screens/home/widgets/category_list_item.dart';
 import 'package:salon/screens/search/search.dart';
 import 'package:salon/screens/search/widgets/search_tabs.dart';
 import 'package:salon/utils/bottom_bar_items.dart';
 import 'package:salon/widgets/shimmer_box.dart';
 import 'package:salon/screens/home/widgets/custom_app_bar.dart';
 import 'package:salon/screens/home/widgets/home_page_card.dart';
+import 'package:salon/data/models/home_page_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -20,10 +20,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final bool _isDataLoaded = false;
+  bool _isDataLoaded;
 
   @override
   void initState() {
+    if (cards.isEmpty) {
+      _isDataLoaded = false;
+    } else {
+      _isDataLoaded = true;
+    }
     super.initState();
   }
 
@@ -33,47 +38,45 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // Use this when fetching data from backend
-  Widget _showHome() {
+  Widget _showCards() {
     return Container(
-      height: 220,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Container(
-            height: 130,
-            child: _isDataLoaded
-                ? ListView(
-                    padding: const EdgeInsetsDirectional.only(start: kPaddingM),
-                    scrollDirection: Axis.horizontal,
-                    children: getIt
-                        .get<AppGlobals>()
-                        .categories
-                        .map((CategoryModel category) {
-                      return Container(
-                        width: 160,
-                        margin:
-                            const EdgeInsets.only(bottom: 1), // for card shadow
-                        padding:
-                            const EdgeInsetsDirectional.only(end: kPaddingS),
-                        child: CategoryListItem(
-                          category: category,
-                          onTap: () => _scrollToTabItem(category),
-                        ),
-                      );
-                    }).toList(),
-                  )
-                : ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsetsDirectional.only(start: kPaddingM),
-                    itemBuilder: (BuildContext context, int index) =>
-                        const ShimmerBox(width: 160, height: 130),
-                    itemCount:
-                        List<int>.generate(3, (int index) => index).length,
-                  ),
-          ),
-        ],
-      ),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: _isDataLoaded
+          ? ListView.builder(
+              itemCount: cards.length,
+              scrollDirection: Axis.vertical,
+              itemBuilder: (BuildContext buildContext, int index) {
+                return Column(
+                  children: <Widget>[
+                    HomePageCard(
+                      profileName: cards[index].profileName,
+                      profilePhotoUrl: cards[index].profilePhotoUrl,
+                      profileTitle: cards[index].profileTitle,
+                      photoUrl: cards[index].photoUrl,
+                      likes: cards[index].likes,
+                      comments: cards[index].comments,
+                      commentContent: cards[index].commentContent,
+                      timePosted: cards[index].timePosted,
+                    ),
+                    // Add some spacing to the last card in the list otherwise the bottom
+                    // bar will block some part of the card.
+                    if (index == cards.length - 1)
+                      const SizedBox(
+                        height: 180.0,
+                      )
+                    else
+                      const SizedBox()
+                  ],
+                );
+              })
+          : ListView.builder(
+              scrollDirection: Axis.vertical,
+              padding: const EdgeInsetsDirectional.only(start: kPaddingM),
+              itemBuilder: (BuildContext context, int index) => ShimmerBox(
+                  width: MediaQuery.of(context).size.width, height: 510),
+              itemCount: List<int>.generate(3, (int index) => index).length,
+            ),
     );
   }
 
@@ -125,17 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       activePage: 'home',
                     ),
                   ),
-                  HomePageCard(
-                    profileName: 'Nancy Muthoni',
-                    profilePhotoUrl: 'assets/images/profile/profile-1.jpg',
-                    profileTitle: 'Hair Dresser',
-                    photoUrl: 'assets/images/profile/profile-5.jpg',
-                    likes: 250,
-                    comments: 50,
-                    commentContent:
-                        'Nancy, But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain.',
-                    timePosted: 5,
-                  )
+                  _showCards(),
                 ],
               ),
             )),

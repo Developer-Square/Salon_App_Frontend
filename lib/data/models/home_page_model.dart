@@ -21,7 +21,7 @@ class HomePageModel {
       @required this.timePosted});
 }
 
-final List<HomePageModel> cards = [
+final List<HomePageModel> cards = <HomePageModel>[
   HomePageModel(
     profileName: 'Nancy Muthoni',
     profilePhotoUrl: 'assets/images/profile/profile-1.jpg',

@@ -65,14 +65,14 @@ class _HomePageCardState extends State<HomePageCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Nancy Muthoni',
+                  widget.profileName,
                   style: AppGlobals().buildTextStyle(16.0, true, Colors.black),
                 ),
                 const SizedBox(
                   height: 3.0,
                 ),
                 Text(
-                  'Hair Dresser',
+                  widget.profileTitle,
                   style: AppGlobals()
                       .buildTextStyle(13.0, false, Colors.grey[400]),
                 )
@@ -186,7 +186,9 @@ class _HomePageCardState extends State<HomePageCard> {
           Padding(
             padding: const EdgeInsets.only(top: 14.0, bottom: 12.0),
             child: Text(
-              widget.commentContent.substring(0, 100) + '...',
+              widget.commentContent.length > 100
+                  ? widget.commentContent.substring(0, 100) + '...'
+                  : widget.commentContent,
               style: AppGlobals().buildTextStyle(15.0, false, Colors.black),
             ),
           ),
