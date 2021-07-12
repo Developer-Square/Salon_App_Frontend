@@ -63,7 +63,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
     // To avoid a lot of repitition when needed.
     final Size mediaQuery = MediaQuery.of(context).size;
     return Container(
-      margin: const EdgeInsets.only(bottom: 32.0),
       height: 70.0,
       width: mediaQuery.width,
       color: Colors.white,

@@ -126,7 +126,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   HomePageCard(
-                    photoUrl: 'assets/images/profile/profile-1.jpg',
+                    profileName: 'Nancy Muthoni',
+                    profilePhotoUrl: 'assets/images/profile/profile-1.jpg',
+                    profileTitle: 'Hair Dresser',
+                    photoUrl: 'assets/images/profile/profile-5.jpg',
+                    likes: 250,
+                    comments: 50,
+                    commentContent:
+                        'Nancy, But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain.',
+                    timePosted: 5,
                   )
                 ],
               ),
