@@ -25,7 +25,8 @@ class VoucherInfo extends StatelessWidget {
       return Column(
         children: <Widget>[
           Container(
-            margin: const EdgeInsets.symmetric(vertical: kPaddingS, horizontal: kPaddingM),
+            margin: const EdgeInsets.symmetric(
+                vertical: kPaddingS, horizontal: kPaddingM),
             color: kPrimaryColor.withAlpha(32), // Theme.of(context).cardColor,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,26 +52,34 @@ class VoucherInfo extends StatelessWidget {
                 ),
                 const Padding(
                   padding: EdgeInsets.only(top: kPaddingM),
-                  child: ShimmerBox(width: 200, height: 32),
+                  child: CardShimmerBox(width: 200, height: 32),
                 ),
                 const Padding(
-                  padding: EdgeInsets.only(top: kPaddingS, left: kPaddingM, right: kPaddingM),
-                  child: ShimmerBox(width: 80, height: 48),
+                  padding: EdgeInsets.only(
+                      top: kPaddingS, left: kPaddingM, right: kPaddingM),
+                  child: CardShimmerBox(width: 80, height: 48),
                 ),
-                const Padding(padding: EdgeInsets.only(left: kPaddingM, right: kPaddingM, bottom: kPaddingM)),
+                const Padding(
+                    padding: EdgeInsets.only(
+                        left: kPaddingM, right: kPaddingM, bottom: kPaddingM)),
                 const CardDivider(
                   lineColor: kWhite,
                   height: 3,
                   dashWidth: 6,
                 ),
-                const Padding(padding: EdgeInsets.only(top: kPaddingM, bottom: kPaddingS, left: kPaddingM, right: kPaddingM)),
+                const Padding(
+                    padding: EdgeInsets.only(
+                        top: kPaddingM,
+                        bottom: kPaddingS,
+                        left: kPaddingM,
+                        right: kPaddingM)),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: kPaddingM),
-                  child: ShimmerBox(width: 200, height: 32),
+                  child: CardShimmerBox(width: 200, height: 32),
                 ),
                 const Padding(
                   padding: EdgeInsets.all(kPaddingM),
-                  child: ShimmerBox(width: 240, height: 240),
+                  child: CardShimmerBox(width: 240, height: 240),
                 ),
                 const CardDivider(
                   lineColor: kWhite,
@@ -89,14 +98,21 @@ class VoucherInfo extends StatelessWidget {
 
     switch (voucher.status) {
       case VoucherStatus.active:
-        _date = L10n.of(context).vouchersDueDateActive(voucher.dueDateTime.toLocalDateString).toUpperCase();
+        _date = L10n.of(context)
+            .vouchersDueDateActive(voucher.dueDateTime.toLocalDateString)
+            .toUpperCase();
         break;
       case VoucherStatus.redeemed:
-        _date = L10n.of(context).vouchersDueDateRedeemed(voucher.redemptionDateTime.toLocalDateString).toUpperCase();
+        _date = L10n.of(context)
+            .vouchersDueDateRedeemed(
+                voucher.redemptionDateTime.toLocalDateString)
+            .toUpperCase();
         _dateColor = Colors.green[700];
         break;
       case VoucherStatus.expired:
-        _date = L10n.of(context).vouchersDueDateExpired(voucher.dueDateTime.toLocalDateString).toUpperCase();
+        _date = L10n.of(context)
+            .vouchersDueDateExpired(voucher.dueDateTime.toLocalDateString)
+            .toUpperCase();
         _dateColor = Colors.red;
         break;
       default:
@@ -107,7 +123,8 @@ class VoucherInfo extends StatelessWidget {
     return Column(
       children: <Widget>[
         Container(
-          margin: const EdgeInsets.symmetric(vertical: kPaddingS, horizontal: kPaddingM),
+          margin: const EdgeInsets.symmetric(
+              vertical: kPaddingS, horizontal: kPaddingM),
           color: kPrimaryColor, // Theme.of(context).cardColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -118,7 +135,8 @@ class VoucherInfo extends StatelessWidget {
                 dashWidth: 6,
               ),
               InkWell(
-                onTap: () => Navigator.pushNamed(context, Routes.location, arguments: voucher.location.id),
+                onTap: () => Navigator.pushNamed(context, Routes.location,
+                    arguments: voucher.location.id),
                 child: Container(
                   width: 128,
                   height: 128,
@@ -140,14 +158,17 @@ class VoucherInfo extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: kPaddingS, left: kPaddingM, right: kPaddingM),
+                padding: const EdgeInsets.only(
+                    top: kPaddingS, left: kPaddingM, right: kPaddingM),
                 child: StrutText(
-                  L10n.of(context).commonCurrencyFormat(voucher.amount.toString()),
+                  L10n.of(context)
+                      .commonCurrencyFormat(voucher.amount.toString()),
                   style: Theme.of(context).textTheme.headline3.w600.white,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: kPaddingM, right: kPaddingM, bottom: kPaddingM),
+                padding: const EdgeInsets.only(
+                    left: kPaddingM, right: kPaddingM, bottom: kPaddingM),
                 child: StrutText(
                   L10n.of(context).vouchersLabelOff.toUpperCase(),
                   style: Theme.of(context).textTheme.caption.w600.white,
@@ -155,7 +176,11 @@ class VoucherInfo extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: kPaddingS, bottom: kPaddingM, left: kPaddingM, right: kPaddingM),
+                padding: const EdgeInsets.only(
+                    top: kPaddingS,
+                    bottom: kPaddingM,
+                    left: kPaddingM,
+                    right: kPaddingM),
                 child: StrutText(
                   voucher.service,
                   style: Theme.of(context).textTheme.bodyText2.white,
@@ -167,7 +192,11 @@ class VoucherInfo extends StatelessWidget {
                 dashWidth: 6,
               ),
               Padding(
-                padding: const EdgeInsets.only(top: kPaddingM, bottom: kPaddingS, left: kPaddingM, right: kPaddingM),
+                padding: const EdgeInsets.only(
+                    top: kPaddingM,
+                    bottom: kPaddingS,
+                    left: kPaddingM,
+                    right: kPaddingM),
                 child: StrutText(
                   L10n.of(context).voucherLabelCouponCode.toUpperCase(),
                   style: Theme.of(context).textTheme.caption.white,
@@ -198,21 +227,28 @@ class VoucherInfo extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: kPaddingM, right: kPaddingM, bottom: kPaddingM),
+          padding: const EdgeInsets.only(
+              left: kPaddingM, right: kPaddingM, bottom: kPaddingM),
           child: StrutText(
             _date,
-            style: Theme.of(context).textTheme.caption.copyWith(color: _dateColor),
+            style:
+                Theme.of(context).textTheme.caption.copyWith(color: _dateColor),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: kPaddingM, bottom: kPaddingS, left: kPaddingM, right: kPaddingM),
+          padding: const EdgeInsets.only(
+              top: kPaddingM,
+              bottom: kPaddingS,
+              left: kPaddingM,
+              right: kPaddingM),
           child: StrutText(
             L10n.of(context).voucherLabelSpecialTerms.toUpperCase(),
             style: Theme.of(context).textTheme.caption.bold,
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom: kPaddingL, left: kPaddingM, right: kPaddingM),
+          padding: const EdgeInsets.only(
+              bottom: kPaddingL, left: kPaddingM, right: kPaddingM),
           child: StrutText(
             voucher.specialTerms.isNotEmpty ? voucher.specialTerms : '- - -',
             style: Theme.of(context).textTheme.caption,

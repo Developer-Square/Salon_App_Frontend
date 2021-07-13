@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (cards.isEmpty) {
       _isDataLoaded = false;
     } else {
-      _isDataLoaded = true;
+      _isDataLoaded = false;
     }
     super.initState();
   }
@@ -72,8 +72,8 @@ class _HomeScreenState extends State<HomeScreen> {
               })
           : ListView.builder(
               scrollDirection: Axis.vertical,
-              padding: const EdgeInsetsDirectional.only(start: kPaddingM),
-              itemBuilder: (BuildContext context, int index) => ShimmerBox(
+              padding: const EdgeInsetsDirectional.only(top: kPaddingM),
+              itemBuilder: (BuildContext context, int index) => CardShimmerBox(
                   width: MediaQuery.of(context).size.width, height: 510),
               itemCount: List<int>.generate(3, (int index) => index).length,
             ),

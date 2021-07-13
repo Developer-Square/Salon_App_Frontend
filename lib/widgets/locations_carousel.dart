@@ -44,8 +44,10 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                     children: widget.locations.map((LocationModel location) {
                       return Container(
                         width: 340,
-                        padding: const EdgeInsetsDirectional.only(end: kPaddingS),
-                        margin: const EdgeInsets.only(bottom: 1), // For card shadow
+                        padding:
+                            const EdgeInsetsDirectional.only(end: kPaddingS),
+                        margin:
+                            const EdgeInsets.only(bottom: 1), // For card shadow
                         child: LocationListItem(
                           location: location,
                           viewType: LocationListItemViewType.map,
@@ -57,8 +59,10 @@ class _LocationsCarouselState extends State<LocationsCarousel> {
                 : ListView.builder(
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsetsDirectional.only(start: kPaddingM),
-                    itemBuilder: (BuildContext context, int index) => const ShimmerBox(width: 340, height: 250),
-                    itemCount: List<int>.generate(2, (int index) => index).length,
+                    itemBuilder: (BuildContext context, int index) =>
+                        const CardShimmerBox(width: 340, height: 250),
+                    itemCount:
+                        List<int>.generate(2, (int index) => index).length,
                   ),
           ),
         ],
