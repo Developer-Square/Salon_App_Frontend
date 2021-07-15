@@ -1,42 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:salon/configs/app_globals.dart';
 import 'package:salon/widgets/image_display.dart';
-
-/// Builds out the circular profile image.
-///
-/// Requires [photoUrl].
-class ProfileIcon extends StatelessWidget {
-  final String photoUrl;
-  final double height;
-  final double width;
-
-  ProfileIcon({@required this.photoUrl, this.height, this.width});
-
-  @override
-  Widget build(BuildContext buildContext) {
-    return Container(
-      margin: const EdgeInsets.only(left: 15.0),
-      decoration: BoxDecoration(
-          border: Border.all(width: 2.5, color: AppGlobals().primaryColor),
-          borderRadius: const BorderRadius.all(Radius.circular(100.0))),
-      child: ClipRRect(
-        borderRadius: const BorderRadius.all(Radius.circular(100.0)),
-        child: Hero(
-          tag: photoUrl,
-          child: Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-              image: AssetImage(photoUrl),
-              fit: BoxFit.cover,
-            )),
-            height: height ?? 50.0,
-            width: width ?? 50.0,
-          ),
-        ),
-      ),
-    );
-  }
-}
+import 'package:salon/screens/home/widgets/profile_icon.dart';
 
 class CustomAppBar extends StatefulWidget {
   final String activePage;

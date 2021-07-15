@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:salon/screens/home/widgets/custom_app_bar.dart';
 import 'package:salon/configs/app_globals.dart';
 import 'package:salon/widgets/image_display.dart';
+import 'package:salon/screens/home/widgets/comments_modal.dart';
+import 'package:salon/screens/home/widgets/profile_icon.dart';
 
 class HomePageCard extends StatefulWidget {
   final String profilePhotoUrl;
@@ -40,6 +41,28 @@ class _HomePageCardState extends State<HomePageCard> {
     setState(() {
       isHeartClicked = !isHeartClicked;
     });
+  }
+
+  // Toggles the visibility of the comments modal
+  _showCommentsModal() {
+    /// Builds out the comment section modal to allow users to
+    /// view and comment on pictures.
+    /// Requires [context].
+    showGeneralDialog(
+        context: context,
+        barrierDismissible:
+            true, // should dialog be dismissed when tapped outside.
+        barrierLabel: 'Comments', // label for barrier.
+        transitionDuration: const Duration(
+            milliseconds:
+                500), // how long it takes to popup dialog after button click.
+        pageBuilder: (_, __, ___) {
+          return CommentsModal(
+            parentContext: context,
+            profileUrl: widget.profilePhotoUrl,
+            commentContent: widget.commentContent,
+          );
+        });
   }
 
   @override
@@ -133,28 +156,25 @@ class _HomePageCardState extends State<HomePageCard> {
       children: <Widget>[
         // TODO: Change icons to svg so that, the color can be changed
         // to grey.
-        InkWell(
-            onTap: () {
-              _handleHeartClicked();
-            },
-            child: isLikeSection
-                ? isHeartClicked
-                    ? ImageDisplay(
-                        photoUrl: 'assets/images/icons/heart-filled.png',
-                        height: 25.0,
-                        width: 25.0,
-                        borderRadius: false,
-                      )
-                    : ImageDisplay(
-                        photoUrl: 'assets/images/icons/heart.png',
-                        height: 28.0,
-                        width: 28.0,
-                        borderRadius: false,
-                      )
-                : const Icon(
-                    Icons.chat_bubble_outline,
-                    size: 28.0,
-                  )),
+        if (isLikeSection)
+          isHeartClicked
+              ? ImageDisplay(
+                  photoUrl: 'assets/images/icons/heart-filled.png',
+                  height: 25.0,
+                  width: 25.0,
+                  borderRadius: false,
+                )
+              : ImageDisplay(
+                  photoUrl: 'assets/images/icons/heart.png',
+                  height: 28.0,
+                  width: 28.0,
+                  borderRadius: false,
+                )
+        else
+          const Icon(
+            Icons.chat_bubble_outline,
+            size: 28.0,
+          ),
         Padding(
           padding: const EdgeInsets.only(left: 5.0),
           child: Text(
@@ -174,13 +194,21 @@ class _HomePageCardState extends State<HomePageCard> {
         children: <Widget>[
           Row(
             children: <Widget>[
-              _buildlikeCommentSection(
-                  _handleHeartClicked, isHeartClicked, true),
+              InkWell(
+                onTap: _handleHeartClicked,
+                child: _buildlikeCommentSection(
+                    _handleHeartClicked, isHeartClicked, true),
+              ),
               const SizedBox(
                 width: 28.0,
               ),
-              _buildlikeCommentSection(
-                  _handleHeartClicked, isHeartClicked, false)
+              InkWell(
+                onTap: () {
+                  _showCommentsModal();
+                },
+                child: _buildlikeCommentSection(
+                    _handleHeartClicked, isHeartClicked, false),
+              )
             ],
           ),
           Padding(

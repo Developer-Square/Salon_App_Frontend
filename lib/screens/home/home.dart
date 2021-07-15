@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (cards.isEmpty) {
       _isDataLoaded = false;
     } else {
-      _isDataLoaded = false;
+      _isDataLoaded = true;
     }
     super.initState();
   }
