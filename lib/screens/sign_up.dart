@@ -98,42 +98,42 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   title: L10n.of(context).signUpTitle,
                   padding: const EdgeInsets.only(bottom: kPaddingM),
                 ),
-                FormLabel(text: L10n.of(context).signUpLabelFirstName),
-                ThemeTextInput(
-                  key: keyNameInput,
-                  hintText: L10n.of(context).signUpHintFirstName,
-                  icon: const Icon(Icons.clear),
-                  controller: _textNameController,
-                  focusNode: _focusName,
-                  textInputAction: TextInputAction.next,
-                  onSubmitted: (String text) => FormUtils.fieldFocusChange(
-                      context, _focusName, _focusUserName),
-                  onTapIcon: () async {
-                    await Future<dynamic>.delayed(
-                        const Duration(milliseconds: 100));
-                    _textNameController.clear();
-                  },
-                  validator: FormValidator.isRequired(
-                      L10n.of(context).formValidatorRequired),
-                ),
-                FormLabel(text: L10n.of(context).signUpLabelUserName),
-                ThemeTextInput(
-                  key: keyUserNameInput,
-                  hintText: L10n.of(context).signUpHintUserName,
-                  icon: const Icon(Icons.clear),
-                  controller: _textUserNameController,
-                  focusNode: _focusUserName,
-                  textInputAction: TextInputAction.next,
-                  onSubmitted: (String text) => FormUtils.fieldFocusChange(
-                      context, _focusUserName, _focusEmail),
-                  onTapIcon: () async {
-                    await Future<dynamic>.delayed(
-                        const Duration(milliseconds: 100));
-                    _textUserNameController.clear();
-                  },
-                  validator: FormValidator.isRequired(
-                      L10n.of(context).formValidatorRequired),
-                ),
+                // FormLabel(text: L10n.of(context).signUpLabelFirstName),
+                // ThemeTextInput(
+                //   key: keyNameInput,
+                //   hintText: L10n.of(context).signUpHintFirstName,
+                //   icon: const Icon(Icons.clear),
+                //   controller: _textNameController,
+                //   focusNode: _focusName,
+                //   textInputAction: TextInputAction.next,
+                //   onSubmitted: (String text) => FormUtils.fieldFocusChange(
+                //       context, _focusName, _focusUserName),
+                //   onTapIcon: () async {
+                //     await Future<dynamic>.delayed(
+                //         const Duration(milliseconds: 100));
+                //     _textNameController.clear();
+                //   },
+                //   validator: FormValidator.isRequired(
+                //       L10n.of(context).formValidatorRequired),
+                // ),
+                // FormLabel(text: L10n.of(context).signUpLabelUserName),
+                // ThemeTextInput(
+                //   key: keyUserNameInput,
+                //   hintText: L10n.of(context).signUpHintUserName,
+                //   icon: const Icon(Icons.clear),
+                //   controller: _textUserNameController,
+                //   focusNode: _focusUserName,
+                //   textInputAction: TextInputAction.next,
+                //   onSubmitted: (String text) => FormUtils.fieldFocusChange(
+                //       context, _focusUserName, _focusEmail),
+                //   onTapIcon: () async {
+                //     await Future<dynamic>.delayed(
+                //         const Duration(milliseconds: 100));
+                //     _textUserNameController.clear();
+                //   },
+                //   validator: FormValidator.isRequired(
+                //       L10n.of(context).formValidatorRequired),
+                // ),
                 FormLabel(text: L10n.of(context).signupLabelEmail),
                 ThemeTextInput(
                   key: keyEmailInput,
@@ -156,24 +156,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     FormValidator.isEmail(L10n.of(context).formValidatorEmail),
                   ]),
                 ),
-                FormLabel(text: L10n.of(context).signUpLabelPhoneNumber),
-                ThemeTextInput(
-                  key: keyPhoneNumberInput,
-                  hintText: L10n.of(context).signUpHintPhoneNumber,
-                  focusNode: _focusPhoneNumber,
-                  onTapIcon: () async {
-                    await Future<dynamic>.delayed(
-                        const Duration(milliseconds: 100));
-                    _textPhoneNumberController.clear();
-                  },
-                  onSubmitted: (String text) => FormUtils.fieldFocusChange(
-                      context, _focusPhoneNumber, _focusPass),
-                  icon: const Icon(Icons.clear),
-                  controller: _textPhoneNumberController,
-                  keyboardType: TextInputType.phone,
-                  validator: FormValidator.isRequired(
-                      L10n.of(context).formValidatorRequired),
-                ),
+                // FormLabel(text: L10n.of(context).signUpLabelPhoneNumber),
+                // ThemeTextInput(
+                //   key: keyPhoneNumberInput,
+                //   hintText: L10n.of(context).signUpHintPhoneNumber,
+                //   focusNode: _focusPhoneNumber,
+                //   onTapIcon: () async {
+                //     await Future<dynamic>.delayed(
+                //         const Duration(milliseconds: 100));
+                //     _textPhoneNumberController.clear();
+                //   },
+                //   onSubmitted: (String text) => FormUtils.fieldFocusChange(
+                //       context, _focusPhoneNumber, _focusPass),
+                //   icon: const Icon(Icons.clear),
+                //   controller: _textPhoneNumberController,
+                //   keyboardType: TextInputType.phone,
+                //   validator: FormValidator.isRequired(
+                //       L10n.of(context).formValidatorRequired),
+                // ),
                 FormLabel(text: L10n.of(context).signUpLabelPassword),
                 ThemeTextInput(
                   key: keyPasswordInput,

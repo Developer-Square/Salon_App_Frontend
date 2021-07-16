@@ -105,7 +105,6 @@ class _SignInWidgetState extends State<SignInWidget>
             await auth.signInWithCredential(credential);
 
         user = userCredential.user;
-        // print(user);
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
           print(e.stackTrace);
@@ -117,16 +116,26 @@ class _SignInWidgetState extends State<SignInWidget>
       }
 
       final String password = generatePassword(true, true, true, true, 12);
-      _sendGoogleToken(
-          googleSignInAuthentication.accessToken, user.displayName, password);
+      _sendGoogleToken(googleSignInAuthentication.accessToken);
     }
 
     return user;
   }
 
-  void _sendGoogleToken(dynamic token, String name, String password) {
-    loginWithGoogle(
-        token: token.toString(), firstName: name, password: password);
+  void _sendGoogleToken(dynamic token) {
+    print(token);
+    loginWithGoogle(token: token.toString());
+  }
+
+  Future<Null> signOutWithGoogle() async {
+    FirebaseApp firebaseApp = await Firebase.initializeApp();
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn =
+        GoogleSignIn(scopes: <String>['email', 'profile']);
+    // Sign out with firebase
+    await auth.signOut();
+    // Sign out with google
+    await googleSignIn.signOut();
   }
 
   @override
