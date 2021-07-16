@@ -116,7 +116,7 @@ class _SignInWidgetState extends State<SignInWidget>
       }
 
       final String password = generatePassword(true, true, true, true, 12);
-      _sendGoogleToken(googleSignInAuthentication.accessToken);
+      _sendGoogleToken(googleSignInAuthentication.idToken);
     }
 
     return user;
