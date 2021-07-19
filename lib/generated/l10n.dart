@@ -14,22 +14,23 @@ import 'intl/messages_all.dart';
 
 class L10n {
   L10n();
-  
+
   static L10n current;
-  
-  static const AppLocalizationDelegate delegate =
-    AppLocalizationDelegate();
+
+  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<L10n> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
-    final localeName = Intl.canonicalizedLocale(name); 
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
+    final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       L10n.current = L10n();
-      
+
       return L10n.current;
     });
-  } 
+  }
 
   static L10n of(BuildContext context) {
     return Localizations.of<L10n>(context, L10n);
@@ -850,6 +851,16 @@ class L10n {
     );
   }
 
+  /// `SigninWithGoogle`
+  String get signInWithGoogleButton {
+    return Intl.message(
+      'Google',
+      name: 'signInWithGoogleButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Forgot your password?`
   String get signInButtonForgot {
     return Intl.message(
@@ -1420,11 +1431,31 @@ class L10n {
     );
   }
 
-  /// `Full name`
-  String get signUpLabelFullName {
+  /// `First name`
+  String get signUpLabelFirstName {
     return Intl.message(
-      'Full name',
-      name: 'signUpLabelFullName',
+      'First name',
+      name: 'signUpLabelFirstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username`
+  String get signUpLabelUserName {
+    return Intl.message(
+      'Username',
+      name: 'signUpLabelUserName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number`
+  String get signUpLabelPhoneNumber {
+    return Intl.message(
+      'Phonenumber',
+      name: 'signUpLabelPhoneNumber',
       desc: '',
       args: [],
     );
@@ -1450,11 +1481,31 @@ class L10n {
     );
   }
 
-  /// `Your full name`
-  String get signUpHintFullName {
+  /// `Your first name`
+  String get signUpHintFirstName {
     return Intl.message(
-      'Your full name',
-      name: 'signUpHintFullName',
+      'Your first name',
+      name: 'signUpHintFirstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your username`
+  String get signUpHintUserName {
+    return Intl.message(
+      'Your username',
+      name: 'signUpHintUserName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your phonenumber`
+  String get signUpHintPhoneNumber {
+    return Intl.message(
+      'Your phone number',
+      name: 'signUpHintPhoneNumber',
       desc: '',
       args: [],
     );
@@ -1710,10 +1761,10 @@ class L10n {
     );
   }
 
-  /// `Full name`
+  /// `First name`
   String get editProfileLabelFullname {
     return Intl.message(
-      'Full name',
+      'First name',
       name: 'editProfileLabelFullname',
       desc: '',
       args: [],
@@ -2468,7 +2519,8 @@ class L10n {
   }
 
   /// `{dow}, {day} {month} {year} at {time}`
-  String appointmentAt(Object dow, Object day, Object month, Object year, Object time) {
+  String appointmentAt(
+      Object dow, Object day, Object month, Object year, Object time) {
     return Intl.message(
       '$dow, $day $month $year at $time',
       name: 'appointmentAt',
