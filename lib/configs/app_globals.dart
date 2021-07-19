@@ -12,6 +12,20 @@ class AppGlobals {
 
   AppGlobals._();
 
+  /// App primary color.
+  final Color backgroundColor = const Color(0xfff8f8f8);
+
+  /// App primary color.
+  final Color primaryColor = const Color(0xffee2a7b);
+
+  /// Adds dynamic styles to text widgets.
+  TextStyle buildTextStyle(double fontSize, bool fontWeight, Color color) {
+    return TextStyle(
+        fontSize: fontSize,
+        fontWeight: fontWeight ? FontWeight.bold : FontWeight.normal,
+        color: color);
+  }
+
   /// Singleton instance.
   static final AppGlobals instance = AppGlobals._();
 
@@ -55,7 +69,8 @@ class AppGlobals {
   bool isRTL;
 
   /// The current brightness mode of the host platform.
-  Brightness get getPlatformBrightness => SchedulerBinding.instance.window.platformBrightness;
+  Brightness get getPlatformBrightness =>
+      SchedulerBinding.instance.window.platformBrightness;
 
   /// Is the current brightness mode of the host platform dark?
   bool get isPlatformBrightnessDark {
